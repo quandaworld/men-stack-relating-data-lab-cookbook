@@ -6,12 +6,12 @@
     <title>My Pantry</title>
   </head>
   <body>
-    <%- include('../partials/_navbar.ejs') %>
     <h1>Welcome to my Pantry</h1>
     <ul>
       <% pantry.forEach(food => { %>
         <li><%= food.name %></li>
       <% }) %>
     </ul>
+    <a href="/users/<%= userId %>/foods/new">Add New Item</a>
   </body>
 </html>
