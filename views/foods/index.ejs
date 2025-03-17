@@ -10,7 +10,12 @@
     <% if (pantry.length > 0) { %>
       <ul>
         <% pantry.forEach(food => { %>
-          <li><%= food.name %></li>
+          <li>
+            <%= food.name %>
+            <form action="/users/<%= userId %>/foods/<%= food._id %>?_method=DELETE" method="POST" style="display:inline;">
+              <button type="submit">Delete</button>
+            </form>
+          </li>
         <% }) %>
       </ul>
     <% } else { %>
