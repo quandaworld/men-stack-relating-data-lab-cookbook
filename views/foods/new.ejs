@@ -3,15 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add New Item</title>
+    <title>Add New Item - CookBook</title>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Add New Item to Pantry</h1>
-    <form action="/users/<%= user._id %>/foods" method="POST">
-      <label for="name">Food Name:</label>
-      <input type="text" id="name" name="name" required>
-      <button type="submit">Add Item</button>
-    </form>
+    
+    <div class="container">
+      <h1>Add New Item to Pantry</h1>
+      
+      <form action="/users/<%= user._id %>/foods" method="POST">
+        <label for="name">Food Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <button type="submit" class="button">Add Item</button>
+        <a href="/users/<%= user._id %>/foods" class="button button-secondary">Cancel</a>
+      </form>
+    </div>
   </body>
 </html>

@@ -3,20 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= user.username %>'s Pantry</title>
+    <title><%= user.username %>'s Pantry - CookBook</title>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= user.username %>'s Pantry</h1>
-    <% if (user.pantry.length > 0) { %>
-      <ul>
-        <% user.pantry.forEach(food => { %>
-          <li><%= food.name %></li>
-        <% }) %>
-      </ul>
-    <% } else { %>
-      <p>This pantry is empty.</p>
-    <% } %>
-    <a href="/users">Back to Community</a>
+    
+    <div class="container">
+      <h1><%= user.username %>'s Pantry</h1>
+      
+      <div class="card">
+        <div class="card-body">
+          <% if (user.pantry.length > 0) { %>
+            <ul>
+              <% user.pantry.forEach(food => { %>
+                <li>
+                  <div class="item-name"><%= food.name %></div>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p>This pantry is empty.</p>
+          <% } %>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px;">
+        <a href="/users" class="button button-secondary">Back to Community</a>
+      </div>
+    </div>
   </body>
 </html>

@@ -3,15 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
+  <title>Home Page - CookBook</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <%- include('./partials/_navbar.ejs') %>
-  <h1>Welcome to CookBook</h1>
-  <p>Let's keep track of your pantry items</p>
-  <% if (user) { %>
-    <a href="/users/<%= user._id %>/foods/new" class="button">Add New Item</a>
-  <% } %>
+  
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to CookBook</h1>
+      <p>The easiest way to keep track of your pantry items</p>
+      <% if (user) { %>
+        <a href="/users/<%= user._id %>/foods/new" class="button">Add New Item</a>
+        <a href="/users/<%= user._id %>/foods" class="button button-secondary">View My Pantry</a>
+      <% } else { %>
+        <a href="/auth/sign-up" class="button">Get Started</a>
+        <a href="/auth/sign-in" class="button button-secondary">Sign In</a>
+      <% } %>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <h2>About CookBook</h2>
+      </div>
+      <div class="card-body">
+        <p>CookBook helps you track what's in your pantry, so you always know what ingredients you have on hand.</p>
+        <p>Join our community to see what others are stocking in their kitchens!</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

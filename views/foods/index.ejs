@@ -3,27 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Pantry</title>
+    <title>My Pantry - CookBook</title>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Welcome to my Pantry</h1>
-    <% if (pantry.length > 0) { %>
-      <ul>
-        <% pantry.forEach(food => { %>
-          <li>
-            <%= food.name %>
-            <a href="/users/<%= user._id %>/foods/<%= food._id %>" class="button">View</a>
-            <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit">Edit</a>
-            <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST" style="display:inline;">
-              <button type="submit">Delete</button>
-            </form>
-          </li>
-        <% }) %>
-      </ul>
-    <% } else { %>
-      <p>There are no items in this pantry.</p>
-    <% } %>
-    <a href="/users/<%= user._id %>/foods/new">Add New Item</a>
+    
+    <div class="container">
+      <h1>My Pantry</h1>
+      
+      <div class="card">
+        <div class="card-body">
+          <% if (pantry.length > 0) { %>
+            <ul>
+              <% pantry.forEach(food => { %>
+                <li>
+                  <div class="item-name"><%= food.name %></div>
+                  <div class="item-actions">
+                    <a href="/users/<%= user._id %>/foods/<%= food._id %>" class="button">View</a>
+                    <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit" class="button button-secondary">Edit</a>
+                    <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST" class="inline">
+                      <button type="submit" class="button button-danger">Delete</button>
+                    </form>
+                  </div>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p>There are no items in your pantry yet.</p>
+          <% } %>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; text-align: center;">
+        <a href="/users/<%= user._id %>/foods/new" class="button">Add New Item</a>
+      </div>
+    </div>
   </body>
 </html>
