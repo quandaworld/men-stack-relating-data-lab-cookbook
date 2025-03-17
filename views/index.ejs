@@ -8,8 +8,6 @@
 <body>
   <%- include('./partials/_navbar.ejs') %>
   <h1>Welcome to CookBook</h1>
-  <% if (user) { %>
-    <a href="/users/<%= user._id %>/foods/new">Add New Item</a>
-  <% } %>
+  <p>Let's keep track of your pantry items</p>
 </body>
 </html>
