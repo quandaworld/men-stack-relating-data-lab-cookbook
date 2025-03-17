@@ -45,6 +45,20 @@ router.get('/:itemId/edit', async (req, res) => {
   }
 });
 
+// PUT /users/:userId/foods/:itemId
+router.put('/:itemId', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const food = user.pantry.id(req.params.itemId);
+    food.set(req.body);
+    await user.save();
+    res.redirect(`/users/${req.params.userId}/foods`);
+  } catch (err) {
+    console.log(err);
+    res.redirect('/');
+  }
+});
+
 // DELETE /users/:userId/foods/:itemId
 router.delete('/:itemId', async (req, res) => {
   try {
