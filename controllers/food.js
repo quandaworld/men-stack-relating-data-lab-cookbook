@@ -6,7 +6,9 @@ const User = require('../models/user');
 router.get('/', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
-    res.render('foods/index.ejs', { pantry: user.pantry, userId: req.params.userId });
+    res.locals.pantry = user.pantry;
+    res.locals.userId = req.params.userId;
+    res.render('foods/index.ejs');
   } catch (err) {
     console.log(err);
     res.redirect('/');
