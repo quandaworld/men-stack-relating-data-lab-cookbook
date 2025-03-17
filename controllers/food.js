@@ -33,6 +33,18 @@ router.post('/', async (req, res) => {
   }
 });
 
+// GET /users/:userId/foods/:itemId/edit
+router.get('/:itemId/edit', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const food = user.pantry.id(req.params.itemId);
+    res.render('foods/edit.ejs', { userId: req.params.userId, food });
+  } catch (err) {
+    console.log(err);
+    res.redirect('/');
+  }
+});
+
 // DELETE /users/:userId/foods/:itemId
 router.delete('/:itemId', async (req, res) => {
   try {
