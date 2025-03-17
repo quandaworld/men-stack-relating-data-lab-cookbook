@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
-// GET /users/:userId/food
+// GET /users/:userId/foods
 router.get('/', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
@@ -25,6 +25,19 @@ router.post('/', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
     user.pantry.push(req.body);
+    await user.save();
+    res.redirect(`/users/${req.params.userId}/foods`);
+  } catch (err) {
+    console.log(err);
+    res.redirect('/');
+  }
+});
+
+// DELETE /users/:userId/foods/:itemId
+router.delete('/:itemId', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    user.pantry.id(req.params.itemId).remove();
     await user.save();
     res.redirect(`/users/${req.params.userId}/foods`);
   } catch (err) {
