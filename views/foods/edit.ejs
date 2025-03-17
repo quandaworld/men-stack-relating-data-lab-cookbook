@@ -6,6 +6,7 @@
     <title>Edit Item</title>
   </head>
   <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1>Edit Item in Pantry</h1>
     <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
       <label for="name">Food Name:</label>

@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <%- include('./partials/_navbar.ejs') %>
   <h1>Welcome to CookBook</h1>
   <p>Let's keep track of your pantry items</p>
+  <% if (user) { %>
+    <a href="/users/<%= user._id %>/foods/new" class="button">Add New Item</a>
+  <% } %>
 </body>
 </html>

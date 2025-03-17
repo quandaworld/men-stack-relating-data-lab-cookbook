@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/:foodId', async (req, res) => {
+router.get('/:itemId', async (req, res) => {
   try {
       const user = await User.findById(req.session.user._id);
       const food = user.pantry.id(req.params.itemId);
